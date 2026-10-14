@@ -1,0 +1,20 @@
+# Credentials, exports, and personal lab artifacts must stay private
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
+*.kdbx
+*PRIVATE*.csv
+*BulkCreate*.csv
+*CreateUsersTemplate*.csv
+*password*.csv
+*recovery*secret*.txt
+secrets/
+private/
+Project.zip
+Nitram_GitHub_Transfer_Test.txt
+*.bak
+.DS_Store
+Thumbs.db
