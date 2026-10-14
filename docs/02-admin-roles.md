@@ -45,4 +45,4 @@ The Defender portal initially remained on a provisioning/loading screen, and an 
 
 The lab demonstrates scoped role assignments and basic positive/negative permission tests. Higher privileges were not added simply to bypass a portal-access issue.
 
-**Additional role evidence:** [Helpdesk Administrator](../screenshots/02-admin-roles/01-helpdesk-admin-role.png) · [User Administrator](../screenshots/02-admin-roles/03-user-admin-role.png) · [Security Reader](../screenshots/02-admin-roles/04-security-reader-role.png) · [Billing Administrator](../screenshots/02-admin-roles/05-billing-admin-role.png)
+**Additional role evidence:** [User Administrator](../screenshots/02-admin-roles/03-user-admin-role.png) · [Billing Administrator](../screenshots/02-admin-roles/05-billing-admin-role.png)
