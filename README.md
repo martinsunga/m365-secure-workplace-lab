@@ -72,7 +72,7 @@ flowchart TB
 
 **Identity-policy validation:** A Conditional Access report-only event showed **Success**. This proves the policy evaluation result, **not** enforcement.
 
-![Conditional Access report-only evaluation](screenshots/03-conditional-access/07-report-only-success.png)
+<img width="686" height="350" alt="CA-001-Report" src="https://github.com/user-attachments/assets/a7212d1f-f885-45b6-9b10-9e3ceb6d44b9" />
 
 ## Implementation reports
 
