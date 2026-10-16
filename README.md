@@ -1,16 +1,8 @@
-# Nitram Technologies | Secure Microsoft 365 Workplace Lab
+# Microsoft 365 Implementation Project
 
-**A Microsoft 365 identity, collaboration, and endpoint-management proof of concept for a fictional 20-employee IT services company.**
+**I built a simulated Microsoft 365 workplace for a fictional company Nitram Technologies to demonstrate the technical responsibilities involved in supporting a small organization. The work covered user onboarding, scalable license assignment, role delegation, identity-security policy design, private document collaboration, Windows enrollment, application deployment, disk encryption, and device compliance.**
 
-**Project type:** Independent technical lab | **Environment:** Microsoft 365 Business Premium trial, Windows 11 Enterprise Evaluation, Hyper-V | **Scope:** 20 fictional employees and one managed Windows VM
-
-> **Project status:** Core identity, licensing, SharePoint access control, and Intune endpoint-management tasks were implemented and validated. The three Conditional Access policies were **evaluated in Report-only mode, not enforced**. This is a controlled lab, not a production deployment or completed enterprise migration.
-
-## Executive summary
-
-I built a simulated Microsoft 365 workplace for Nitram Technologies to demonstrate the technical responsibilities involved in supporting a small organization. The work covered user onboarding, scalable license assignment, role delegation, identity-security policy design, private document collaboration, Windows enrollment, application deployment, disk encryption, and device compliance.
-
-The focus was on **measurable results**, not just creating configurations. I tested administrative boundaries, checked employee access, confirmed an application installed from Intune, verified BitLocker protection and recovery-key escrow, and reviewed compliance at the individual-setting level.
+I tested administrative boundaries, checked employee access, confirmed an application installed from Intune, verified BitLocker protection and recovery-key escrow, and reviewed compliance at the individual-setting level.
 
 ## Business requirements and delivered outcomes
 
@@ -25,56 +17,9 @@ The focus was on **measurable results**, not just creating configurations. I tes
 | Configure endpoint protection | Microsoft Defender PUA protection and BitLocker encryption | PUA setting applied; OS drive 100% encrypted; recovery record backed up |
 | Deliver software and assess compliance | Required Company Portal app, Windows compliance policy | App installed; Secure Boot, Firewall, and BitLocker checks passed |
 
-## Solution architecture
-
-```mermaid
-flowchart TB
-    M365[Microsoft 365 Business Premium tenant]
-    ENTRA[Microsoft Entra ID]
-    SP[SharePoint Online]
-    INTUNE[Microsoft Intune]
-    USERS[20 fictional employees]
-    GROUPS[Department, licensing, and device security groups]
-    CA[Conditional Access policies: Report-only]
-    SITE[Private IT Support team site]
-    VM[Windows 11 Enterprise Evaluation VM]
-    CONFIG[Defender PUA configuration]
-    APP[Required Company Portal deployment]
-    BL[BitLocker and recovery-key backup]
-    COMPLY[Secure Boot / Firewall / BitLocker compliance]
-
-    M365 --> ENTRA
-    M365 --> SP
-    M365 --> INTUNE
-    ENTRA --> USERS
-    ENTRA --> GROUPS
-    ENTRA --> CA
-    SP --> SITE
-    ENTRA --> VM
-    INTUNE --> VM
-    INTUNE --> CONFIG
-    INTUNE --> APP
-    INTUNE --> BL
-    INTUNE --> COMPLY
-```
-
 **Design choices:** Department groups organize access, a separate group controls licensing, and a device group targets endpoint deployment. Limited administrator roles support least privilege. Conditional Access was evaluated before any rollout; Intune configuration and compliance were validated separately.
 
-## Featured implementation evidence
-
-| Identity and licensing | Device security and compliance |
-| --- | --- |
-| ![Microsoft 365 Business Premium group-based license assignment](screenshots/01-entra-id/07-license-count-assigned.png) | ![Secure Boot, BitLocker, and Firewall compliance results](screenshots/05-intune/13-compliance-settings-passed.png) |
-
-**Intune application deployment:** Company Portal was deployed as a required app to the Windows test VM and reported **Installed**.
-
-![Company Portal installation result](screenshots/05-intune/07-company-portal-installed-report.png)
-
-**Identity-policy validation:** A Conditional Access report-only event showed **Success**. This proves the policy evaluation result, **not** enforcement.
-
-<img width="686" height="350" alt="CA-001-Report" src="https://github.com/user-attachments/assets/a7212d1f-f885-45b6-9b10-9e3ceb6d44b9" />
-
-## Implementation reports
+#
 
 The reports below describe **what was implemented, why the approach was chosen, and what evidence supports the results**. They are case-study documentation, not click-by-click tutorials.
 
