@@ -37,7 +37,7 @@ Configured three Microsoft Entra Conditional Access policies to evaluate stronge
 
 **CA-003: Legacy client conditions**
 
-![Legacy authentication client conditions](../screenshots/03-conditional-access/06-legacy-client-app-conditions.png)
+![Legacy authentication client conditions](../screenshots/03-conditional-access/CA-003-Conditions.png)
 
 ## Notes
 
