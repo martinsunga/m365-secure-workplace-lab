@@ -1,52 +1,51 @@
 # Microsoft 365 Implementation Project
 
-**I built a simulated Microsoft 365 workplace for a fictional company Nitram Technologies to demonstrate the technical responsibilities involved in supporting a small organization. The work covered user onboarding, scalable license assignment, role delegation, identity-security policy design, private document collaboration, Windows enrollment, application deployment, disk encryption, and device compliance.**
+I built a simulated Microsoft 365 environment for **Nitram Technologies**, a fictional IT services company with 20 employees.
 
-I tested administrative boundaries, checked employee access, confirmed an application installed from Intune, verified BitLocker protection and recovery-key escrow, and reviewed compliance at the individual-setting level.
+The goal of this project was to gain hands-on experience in Microsoft 365 administration, covering identity and access management, security, collaboration, and endpoint management.
 
-## Business requirements and delivered outcomes
+Throughout the implementation, I tested user permissions, validated security configurations, deployed applications through Intune, and documented the results.
 
-| Requirement | Implementation | Verified outcome |
+## Implementation Overview
+
+| Area | Implementation | Results |
 | --- | --- | --- |
-| Centralize employee identities | Microsoft Entra ID with 20 fictional users in six departments | One manual account + 19 accounts imported successfully |
-| Simplify software licensing | Dedicated `LIC-M365-BusinessPremium` security group | All 20 employees inherited licenses; 20 of 25 trial seats assigned |
-| Delegate IT responsibilities safely | Helpdesk, User, Security Reader, and Billing administrator roles | Allowed and restricted administration actions reviewed |
-| Design stronger sign-in controls | Passwordless MFA pilot, broad passwordless policy, legacy-client blocking policy | Report-only policy results examined; **no CA enforcement** |
-| Restrict department documents | Private, Microsoft 365 group-connected SharePoint team site | IT Support access succeeded; a Sales account was denied |
-| Manage a corporate Windows endpoint | Microsoft Entra join and Intune auto-enrollment | Windows 11 Hyper-V VM appeared as Intune-managed |
-| Configure endpoint protection | Microsoft Defender PUA protection and BitLocker encryption | PUA setting applied; OS drive 100% encrypted; recovery record backed up |
-| Deliver software and assess compliance | Required Company Portal app, Windows compliance policy | App installed; Secure Boot, Firewall, and BitLocker checks passed |
+| **Identity Management** | Created 20 employee accounts in Microsoft Entra ID using manual and bulk provisioning | 20 users successfully created across six departments |
+| **License Management** | Configured group-based Microsoft 365 Business Premium licensing | All 20 employees received inherited licenses |
+| **Administrative Roles** | Assigned Helpdesk, User, Security Reader, and Billing Administrator roles | Tested selected administrative permissions and restrictions |
+| **Conditional Access** | Configured passwordless MFA and legacy authentication policies | Evaluated in Report-only mode; not enforced |
+| **SharePoint Online** | Created a private IT Support team site | Verified authorized and unauthorized user access |
+| **Microsoft Intune** | Enrolled a Windows 11 virtual machine and configured endpoint protection | Device successfully enrolled and security settings applied |
+| **Application Deployment** | Deployed Company Portal as a required application | Installation verified on the managed device |
+| **BitLocker & Compliance** | Configured disk encryption and device compliance requirements | BitLocker protection enabled; Firewall, Secure Boot, and BitLocker compliance checks passed |
 
-**Design choices:** Department groups organize access, a separate group controls licensing, and a device group targets endpoint deployment. Limited administrator roles support least privilege. Conditional Access was evaluated before any rollout; Intune configuration and compliance were validated separately.
+## Project Documentation
 
-#
+The following documentation provides details about the implementation, technical decisions, testing, and results.
 
-The reports below describe **what was implemented, why the approach was chosen, and what evidence supports the results**. They are case-study documentation, not click-by-click tutorials.
-
-| Report | Focus |
+| Documentation | Description |
 | --- | --- |
-| [01. Identity and licensing](docs/01-identity-and-licensing.md) | Employee provisioning, department structure, inherited licensing |
-| [02. Delegated administration](docs/02-admin-roles.md) | Role assignments and least-privilege validation |
-| [03. Identity security](docs/03-conditional-access.md) | Passwordless MFA policies, legacy authentication scope, report-only results |
-| [04. SharePoint collaboration](docs/04-sharepoint.md) | Private team site, membership and access tests, upload simulation |
-| [05. Intune endpoint management](docs/05-intune.md) | Windows enrollment, device targeting, Defender, required application |
-| [06. BitLocker and compliance](docs/06-bitlocker-and-compliance.md) | Encryption, recovery-key escrow, individual compliance checks |
-| [07. Validation and improvements](docs/07-validation-and-lessons.md) | Test matrix, issues resolved, documented limitations |
+| [01. Identity and Licensing](docs/01-identity-and-licensing.md) | User provisioning, security groups, and group-based licensing |
+| [02. Delegated Administration](docs/02-admin-roles.md) | Administrative role assignments and permission testing |
+| [03. Identity Security](docs/03-conditional-access.md) | Conditional Access configuration and Report-only testing |
+| [04. SharePoint Collaboration](docs/04-sharepoint.md) | Team site configuration and access validation |
+| [05. Intune Endpoint Management](docs/05-intune.md) | Windows enrollment, security policies, and application deployment |
+| [06. BitLocker and Compliance](docs/06-bitlocker-and-compliance.md) | Device encryption, recovery-key backup, and compliance testing |
+| [07. Validation and Lessons Learned](docs/07-validation-and-lessons.md) | Testing results, troubleshooting, and areas for improvement |
 
-[Browse the complete evidence catalog](screenshots/README.md).
+[View the screenshot evidence catalog](screenshots/README.md)
 
-## Scope and limitations
+## Project Scope and Limitations
 
-- **Conditional Access:** All three policies remained in Report-only mode, while Security Defaults remained enabled. No enforced passwordless rollout or legacy-authentication blocking by these policies is claimed.
-- **SharePoint:** Private-site access was tested and three sample files were uploaded. Most files were empty or nearly empty; file contents were not validated, so this is not a completed file-server migration.
-- **Endpoint scope:** Intune results come from **one** Windows 11 virtual machine, not an organization-wide device rollout.
-- **Recovery readiness:** A backup Global Administrator existed, but authentication independence and a live BitLocker recovery exercise were not validated.
-- **Data safety:** All employee identities are fictional. No passwords, original bulk-import credential CSV, or BitLocker recovery passwords are published.
+This project was implemented in a **Microsoft 365 Business Premium trial environment** using fictional employee accounts and a Windows 11 virtual machine.
 
-## Technologies used
+- **Conditional Access:** Policies remained in Report-only mode while Microsoft Entra Security Defaults stayed enabled.
+- **SharePoint:** File uploads and access permissions were tested, but a complete data migration was not performed.
+- **Endpoint Management:** Intune deployment and compliance testing were performed on one Windows 11 virtual machine.
+- **Recovery Testing:** BitLocker recovery-key backup was verified, but an actual recovery scenario was not performed.
 
-Microsoft Entra ID · Microsoft 365 Admin Center · Microsoft Intune · Microsoft Defender · SharePoint Online · Windows 11 Enterprise Evaluation · Hyper-V · GitHub
+The project demonstrates a small-business proof of concept rather than a complete production deployment.
 
----
+## Technologies Used
 
-**Project outcome:** A reproducible small-business proof of concept showing integrated Microsoft 365 administration with clearly recorded successes, unresolved limits, and improvement opportunities.
+Microsoft 365 · Microsoft Entra ID · Microsoft Intune · Microsoft Defender · SharePoint Online · Windows 11 Enterprise Evaluation · Hyper-V · GitHub
