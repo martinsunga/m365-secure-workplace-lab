@@ -31,11 +31,13 @@ Used Microsoft Intune to manage a Windows 11 virtual machine, apply endpoint pro
 
 **Endpoint protection**
 
+![Defender PUA policy succeeded](../screenshots/05-intune/03-defender-policy-configuration.png)
 ![Defender PUA policy succeeded](../screenshots/05-intune/04-defender-policy-succeeded.png)
 
 **Application deployment**
 
 ![Company Portal installed report](../screenshots/05-intune/07-company-portal-installed-report.png)
+![Company Portal installed report](../screenshots/05-intune/08-company-portal-on-vm.png)
 
 ## Notes
 
