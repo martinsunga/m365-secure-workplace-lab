@@ -1,48 +1,39 @@
-# 02 | Role delegation and least privilege
+# 02. Delegated Administration
 
-[← Project overview](../README.md) | [Evidence catalog](../screenshots/README.md)
+[← Project overview](../README.md) | [Screenshot catalog](../screenshots/README.md)
 
-## Business requirement
+## Overview
 
-A small IT services organization needs administrative responsibility distributed across support, user administration, security review, and billing without granting every employee unrestricted Global Administrator access.
+Assigned administrator roles based on employee responsibilities to demonstrate least-privilege access in Microsoft Entra ID.
 
-## Implemented access model
+## Implementation
 
-| Fictional employee | Microsoft Entra role | Intended responsibility |
-| --- | --- | --- |
-| Alex Reyes | Helpdesk Administrator | Limited password and helpdesk support |
-| Bianca Santos | User Administrator | Employee account administration |
-| Gabriel Torres | Security Reader | Review identity and Microsoft Defender security information |
-| Queenie Flores | Billing Administrator | Subscription and billing-related administration |
+| Employee | Assigned role |
+| --- | --- |
+| Alex Reyes | Helpdesk Administrator |
+| Bianca Santos | User Administrator |
+| Gabriel Torres | Security Reader |
+| Queenie Flores | Billing Administrator |
 
-These built-in roles were deliberately separate from **job titles** and **departmental security group membership**. Membership in `SG-ITSupport` does not itself grant directory administrator rights or Windows local administrator access.
+These are directory roles, not permissions automatically granted by departmental security group membership.
 
-## Permission validation
+## Results
 
-### Allowed operation: Helpdesk Administrator
+- **Helpdesk Administrator:** Alex could access the password-reset function for a standard user. An actual reset was not performed.
+- **Security Reader:** Gabriel could review Entra sign-in information and the Microsoft Defender Alerts page.
+- **Access restriction:** Gabriel could not reset a user's password with the Security Reader role.
+- **Other roles:** User Administrator and Billing Administrator assignments were confirmed; their full permission sets were not tested.
 
-Alex signed in using his own test identity and opened the password-reset function for a regular employee account.
+## Evidence
 
-![Helpdesk administrator accessing the reset-password control](../screenshots/02-admin-roles/02-helpdesk-password-reset-access.png)
+**Helpdesk Administrator access**
 
-**Result:** The reset control was available. **No password reset was executed**, so the test proves access to the operation, not a completed recovery workflow.
+![Helpdesk password-reset control](../screenshots/02-admin-roles/02-helpdesk-password-reset-access.png)
 
-### Read-only security access: Security Reader
+**Security Reader restriction**
 
-Gabriel accessed Microsoft Entra sign-in information and, once Defender's tenant setup progressed, could open the Microsoft Defender **Alerts** page.
+![Security Reader unable to reset a password](../screenshots/02-admin-roles/07-security-reader-reset-restriction.png)
 
-![Defender alerts accessible to Security Reader](../screenshots/02-admin-roles/06-defender-alerts-read-access.png)
+## Notes
 
-The test also showed that Gabriel could not carry out a normal user's password reset using this role.
-
-![Restricted password-reset operation](../screenshots/02-admin-roles/07-security-reader-reset-restriction.png)
-
-## Implementation issue
-
-The Defender portal initially remained on a provisioning/loading screen, and an **Incidents** view returned a permissions message. After the service setup progressed, Gabriel was able to access **Alerts**. This evidence does **not** establish unrestricted read access to every Defender workload, and the permission issue's root cause was not confirmed.
-
-## Result and rationale
-
-The lab demonstrates scoped role assignments and basic positive/negative permission tests. Higher privileges were not added simply to bypass a portal-access issue.
-
-**Additional role evidence:** [User Administrator](../screenshots/02-admin-roles/03-user-admin-role.png) · [Billing Administrator](../screenshots/02-admin-roles/05-billing-admin-role.png)
+The Microsoft Defender portal initially showed loading and permission issues. The Alerts page became accessible later, but this does not establish access to every Defender workload.
